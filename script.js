@@ -1,7 +1,9 @@
 'use strict'
-let playerSelection = prompt("Pick you choice: Rock, Paper or Scissors");
+const playerSelection = prompt("Pick you choice: Rock, Paper or Scissors");
+const playerChoice = playerSelection.toUpperCase(0);
 
 console.log(playerSelection);
+console.log(playerChoice);
 
 function getComputerChoice() {
     const computerChoice = Math.floor(Math.random() * 3);
@@ -15,3 +17,8 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+const computerSelection = getComputerChoice();
+const playRound = function (playerSelection, computerSelection) {
+
+}
