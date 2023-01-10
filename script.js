@@ -64,7 +64,16 @@ console.log(playRound()); // test function expression
 console.log(playerScore);
 console.log(computerScore);
 
-if (playerScore === 5) {
+// function game() {
+//     for (playerScore <= 5; playerScore++)
+// }
+
+for (playerScore; playerScore <= 5; playerScore++) {
+    playerSelection;
+}
+
+if (playerScore === 5 || 6) {
+    playerScore = 0;
     console.log('Player Wins!')
 } else if (computerScore === 5) {
     console.log('Computer Wins!')
