@@ -81,12 +81,14 @@ function game() {
 
 }
 
+//must enter no to work sort tomorrow
 if (startGame === 'yes') {
     game();
 } else {
     alert('please start game');
+    game();
 }
-
+game();
 
 if (playerScore >= 5) {
     playerScore = 0;
