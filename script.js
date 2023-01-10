@@ -1,4 +1,5 @@
 'use strict'
+let startGame = prompt('Start Game?');
 let playerSelection = prompt("Pick you choice: Rock, Paper or Scissors"); // initial prompt
 let playerChoice = playerSelection.toLowerCase(0); // converts prompt to lower case to make insensitive
 let playerScore = 0;
@@ -80,8 +81,11 @@ function game() {
 
 }
 
-
-game();
+if (startGame === 'yes') {
+    game();
+} else {
+    alert('please start game');
+}
 
 
 if (playerScore >= 5) {
