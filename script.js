@@ -22,7 +22,7 @@ function getComputerChoice() {
 
 console.log(getComputerChoice()); //test function
 
-const computerSelection = getComputerChoice(); // variable made to use in argument for paremeter
+// const computerSelection = getComputerChoice(); // variable made to use in argument for paremeter
 // function to play game uses all options
 
 function playRound(playerSelection, computerSelection) {
@@ -70,6 +70,8 @@ function game() {
     for (playerScore, computerScore; playerScore <= 4, computerScore <= 4;) {
         let playerChoice = prompt("Pick you choice: Rock, Paper or Scissors");
         let playerSelection = playerChoice.toLowerCase(0);
+        let computerSelection = getComputerChoice();
+        computerSelection
         playerSelection;
         whoWon(playerSelection, computerSelection);
         console.log(playerScore);
