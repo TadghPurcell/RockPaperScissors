@@ -1,12 +1,7 @@
 'use strict'
-// let playerChoice = prompt("Pick you choice: Rock, Paper or Scissors");
-// let playerSelection = playerChoice.toLowerCase(0);
+// variables to be invoked later by the game() function to keep track of scores
 let playerScore = 0;
 let computerScore = 0;
-
-
-// console.log(playerSelection); // test variable
-// console.log(playerChoice); // test variable
 
 // function to get random value for computer
 function getComputerChoice() {
@@ -20,11 +15,7 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice()); //test function
-
-// const computerSelection = getComputerChoice(); // variable made to use in argument for paremeter
-// function to play game uses all options
-
+// function to return string every time round is played depending on result of user/comp input (invoked in game() function)
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === 'rock' && computerSelection === 'rock') {
@@ -50,6 +41,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// function to increase user or computer score by 1 depending on result of comp/user input
 function whoWon(playerSelection, computerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock' || playerSelection === 'scissors' && computerSelection === 'paper') {
         playerScore += 1;
@@ -58,14 +50,7 @@ function whoWon(playerSelection, computerSelection) {
     }
 }
 
-
-// console.log(playRound()); // test function expression
-// console.log(whoWon());
-
-
-console.log(playerScore);
-console.log(computerScore);
-
+// most important function - runs loop to increment and keep track of scores and executes all other functions as prompt is entered to return a new value for scores, and a string to show the events of the round
 function game() {
     for (playerScore, computerScore; playerScore <= 4, computerScore <= 4;) {
         let playerChoice = prompt("Pick you choice: Rock, Paper or Scissors");
@@ -74,34 +59,35 @@ function game() {
         computerSelection
         playerSelection;
         whoWon(playerSelection, computerSelection);
-        console.log(playerScore);
-        console.log(computerScore); // if don't have increments it will never stop increasing
         console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player Score (${playerScore}) vs. Computer Score (${computerScore}).`);
         if (playerScore >= 5) {
+            console.log(`Player Wins! (${playerScore}) vs. (${computerScore}).`);
             playerScore = 0;
             computerScore = 0;
-            console.log('Player Wins');
             return;
         } else if (computerScore >= 5) {
+            console.log(`Computer Wins! (${computerScore}) vs. (${playerScore}).`);
             playerScore = 0;
             computerScore = 0;;
-            console.log('Computer Wins!');
             return;
         }
     }
 
 }
 
-//must enter no to work sort tomorrow
+// function invoked when start game button click which sets the initial prompt
 function buttonClick() {
-    let startGame = prompt('Start Game?')
+    let startPrompt = prompt('Start Game? Yes/No')
+    let startGame = startPrompt.toLowerCase(0);
     if (startGame === 'yes') {
         alert('Best of luck!');
         game();
-    } else {
+    } else if (startGame === 'no') {
         alert('You have no choice');
         game();
+    } else {
+        alert('Invalid choice. Please enter a correct option.');
     }
 }
-// game();
 
