@@ -8,20 +8,42 @@
     <link rel="stylesheet " href="./style.css" />
   </head>
 
-  <body>
-    <button class="btn rock">Rock</button>
-    <button class="btn paper">Paper</button>
-    <button class="btn scissors">Scissors</button>
-    <p class="dialog"></p>
+  
+    <div class="img-holder">
+      <img class="photo--0" src="./images/rock.png" alt="rock" />
+      <img class="photo--1" src="./images/paper.png" alt="paper" />
+      <img class="photo--2" src="./images/scissors.png" alt="scissors" />
+    </div>
 
-    <div class="scoreboard">
+    <div class="textcontent">
+    <p class="dialog">Start Game...</p>
+    <p class="winner"></p>
+    </div>
+
+<div class="scoreboard">
+    <div class="user">
       <h2 class="name--0">User</h2>
       <p class="score--0">0</p>
+    </div>
+    
+    <div class="computer">
       <h2 class="name--1">Computer</h2>
       <p class="score--1">0</p>
     </div>
-    <p class="winner"></p>
+  </div>
+
+
+    <div class="player-selection">
+      <button class="btn rock">Rock</button>
+      <button class="btn paper">Paper</button>
+      <button class="btn scissors">Scissors</button>
+    </div>
+
+    <div class="gameover">
     <button class="btn again">Do you want to play again?</button>
+    </div>
+    
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -16,7 +16,7 @@ const init = function () {
   playing = true;
   playerScore = 0;
   computerScore = 0;
-  dialog.textContent = '';
+  dialog.textContent = 'Start Game...';
   winner.textContent = '';
   score0El.textContent = 0;
   score1El.textContent = 0;
@@ -35,6 +35,11 @@ function updatePlayerInput() {
 rock.addEventListener('click', updatePlayerInput);
 paper.addEventListener('click', updatePlayerInput);
 scissors.addEventListener('click', updatePlayerInput);
+
+function playerIcon() {
+  if (playerInput === 'Rock') {
+  }
+}
 
 //function to get player input from click
 // function getPlayerChoice() {}
@@ -115,10 +120,9 @@ function game() {
   if (playerScore >= 5 || computerScore >= 5) {
     dialog.textContent = 'Game over!';
     btnAgain.classList.remove('hidden');
-    winner.textContent =
-      playerScore >= 5
-        ? `Player Wins! (${playerScore}) vs. (${computerScore}).`
-        : (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
+    playerScore >= 5
+      ? `Player Wins! (${playerScore}) vs. (${computerScore}).`
+      : (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
     playing = false;
     return;
   }

@@ -1,6 +1,69 @@
 body {
   background-color: rgb(89, 249, 238);
+  font-family: fantasy;
 }
+
 .hidden {
   display: none;
+}
+.img-holder {
+  display: flex;
+  justify-content: space-evenly;
+}
+.photo--0 {
+  width: 75px;
+  height: 75px;
+}
+.photo--1 {
+  width: 85px;
+  height: 85px;
+}
+.photo--2 {
+  width: 100px;
+  height: 100px;
+}
+.btn {
+  background-color: darkorange;
+  color: black;
+  border: none;
+  font-size: 50px;
+}
+
+/*Text content */
+.textcontent {
+  display: flex;
+  margin-top: 64px;
+  justify-content: center;
+}
+/*main buttons */
+.player-selection {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+  gap: 64px;
+}
+
+.gameover {
+  display: flex;
+
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-evenly;
+}
+.scoreboard .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreboard .computer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
