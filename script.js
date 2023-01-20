@@ -10,22 +10,31 @@ const score1El = document.querySelector('.score--1');
 const winner = document.querySelector('.winner');
 const btnAgain = document.querySelector('.again');
 // variables to be invoked later by the game() function to keep track of scores
-let playerScore = 0;
-let computerScore = 0;
-let playerInput = '';
+let playerScore, computerScore, playerInput, playing;
 
-rock.addEventListener('click', function () {
-  //   console.log('rock');
-  return (playerInput = 'rock');
-});
-paper.addEventListener('click', function () {
-  //   console.log('paper');
-  return (playerInput = 'paper');
-});
-scissors.addEventListener('click', function () {
-  //   console.log('scissors');
-  return (playerInput = 'scissors');
-});
+const init = function () {
+  playing = true;
+  playerScore = 0;
+  computerScore = 0;
+  dialog.textContent = '';
+  winner.textContent = '';
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  btnAgain.classList.toggle('hidden');
+};
+init();
+
+function updatePlayerInput() {
+  if (playing) {
+    return (playerInput = this.textContent);
+  } else {
+    return (playerInput = '');
+  }
+}
+
+rock.addEventListener('click', updatePlayerInput);
+paper.addEventListener('click', updatePlayerInput);
+scissors.addEventListener('click', updatePlayerInput);
 
 //function to get player input from click
 // function getPlayerChoice() {}
@@ -34,11 +43,11 @@ scissors.addEventListener('click', function () {
 function getComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
   if (computerChoice === 0) {
-    return 'rock';
+    return 'Rock';
   } else if (computerChoice === 1) {
-    return 'paper';
+    return 'Paper';
   } else {
-    return 'scissors';
+    return 'Scissors';
   }
 }
 
@@ -48,31 +57,31 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerInput;
   computerSelection = getComputerChoice();
 
-  if (playerSelection === 'rock' && computerSelection === 'rock') {
+  if (playerSelection === 'Rock' && computerSelection === 'Rock') {
     dialog.textContent = 'Rock vs. Rock. Tie Game!';
-  } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+  } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
     computerScore += 1;
     dialog.textContent = 'You lose! Paper beats Rock.';
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+  } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
     playerScore += 1;
     dialog.textContent = 'You win! Rock beats Scissors.';
-  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+  } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
     playerScore += 1;
     dialog.textContent = 'You win! Paper beats Rock.';
-  } else if (playerSelection === 'paper' && computerSelection === 'paper') {
+  } else if (playerSelection === 'Paper' && computerSelection === 'Paper') {
     dialog.textContent = 'Paper vs. Paper. Tie Game!';
-  } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+  } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
     computerScore += 1;
     dialog.textContent = 'You lose! Scissors beats Paper.';
-  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+  } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
     computerScore += 1;
     dialog.textContent = 'You lose! Rock beats Scissors.';
-  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+  } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
     playerScore += 1;
     dialog.textContent = 'You win! Scissors beats paper.';
   } else if (
-    playerSelection === 'scissors' &&
-    computerSelection === 'scissors'
+    playerSelection === 'Scissors' &&
+    computerSelection === 'Scissors'
   ) {
     dialog.textContent = 'Scissors vs. Scissors. Tie Game!';
   } else {
@@ -104,11 +113,13 @@ function whoWon(playerSelection, computerSelection) {
 // most important function - runs loop to increment and keep track of scores and executes all other functions as prompt is entered to return a new value for scores, and a string to show the events of the round
 function game() {
   if (playerScore >= 5 || computerScore >= 5) {
+    dialog.textContent = 'Game over!';
     btnAgain.classList.remove('hidden');
     winner.textContent =
       playerScore >= 5
         ? `Player Wins! (${playerScore}) vs. (${computerScore}).`
         : (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
+    playing = false;
     return;
   }
 }
@@ -118,12 +129,4 @@ for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener('click', playRound);
 }
 
-btnAgain.addEventListener('click', function () {
-  playerScore = 0;
-  computerScore = 0;
-  dialog.textContent = '';
-  winner.textContent = '';
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  btnAgain.classList.toggle('hidden');
-});
+btnAgain.addEventListener('click', init);
