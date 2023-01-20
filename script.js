@@ -114,25 +114,8 @@ function game() {
   }
 }
 
-// function invoked when start game button click which sets the initial prompt
-function buttonClick() {
-  let startPrompt = prompt('Start Game? Yes/No');
-  let startGame = startPrompt.toLowerCase(0);
-  if (startGame === 'yes') {
-    alert('Best of luck!');
-    game();
-  } else if (startGame === 'no') {
-    alert('You have no choice');
-    game();
-  } else {
-    alert('Invalid choice. Please enter a correct option.');
-  }
-}
-
 //Loop to get queryselectorAll - playround applies to all 3
 for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener('click', playRound);
 }
 
-// loop to make depending on selection of button i dno
-for (let i = 0; i < btns.length; i++) {}
