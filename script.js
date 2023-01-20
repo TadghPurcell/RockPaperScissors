@@ -5,6 +5,10 @@ const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 const btns = document.querySelectorAll('.btn');
 const dialog = document.querySelector('.dialog');
+const score0El = document.querySelector('.score--0');
+const score1El = document.querySelector('.score--1');
+const winner = document.querySelector('.winner');
+const btnAgain = document.querySelector('.again');
 // variables to be invoked later by the game() function to keep track of scores
 let playerScore = 0;
 let computerScore = 0;
@@ -40,12 +44,15 @@ function getComputerChoice() {
 
 // function to return string every time round is played depending on result of user/comp input (invoked in game() function)
 function playRound(playerSelection, computerSelection) {
+  //update scores
+  score0El.textContent = playerScore;
+  score1El.textContent = computerScore;
+  //
   playerSelection = playerInput;
   computerSelection = getComputerChoice();
+  whoWon(playerSelection, computerSelection);
+  game();
 
-  console.log('Im working');
-  console.log(playerSelection);
-  console.log(computerSelection);
   if (playerSelection === 'rock' && computerSelection === 'rock') {
     dialog.textContent = 'scissors vs. Rock. Tie Game!';
   } else if (playerSelection === 'rock' && computerSelection === 'paper') {
@@ -91,28 +98,19 @@ function whoWon(playerSelection, computerSelection) {
 
 // most important function - runs loop to increment and keep track of scores and executes all other functions as prompt is entered to return a new value for scores, and a string to show the events of the round
 function game() {
-  for (playerScore, computerScore; playerScore <= 4, computerScore <= 4; ) {
-    let playerChoice = prompt('Pick you choice: Rock, Paper or Scissors');
-    let playerSelection = playerChoice.toLowerCase(0);
-    let computerSelection = getComputerChoice();
-    computerSelection;
-    playerSelection;
-    whoWon(playerSelection, computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(
-      `Player Score (${playerScore}) vs. Computer Score (${computerScore}).`
-    );
-    if (playerScore >= 5) {
-      console.log(`Player Wins! (${playerScore}) vs. (${computerScore}).`);
-      playerScore = 0;
-      computerScore = 0;
-      return;
-    } else if (computerScore >= 5) {
-      console.log(`Computer Wins! (${computerScore}) vs. (${playerScore}).`);
-      playerScore = 0;
-      computerScore = 0;
-      return;
-    }
+  if (playerScore >= 5) {
+    console.log(`Player Wins! (${playerScore}) vs. (${computerScore}).`);
+    btnAgain.classList.remove('hidden');
+    return (winner.textContent = `Player Wins! (${playerScore}) vs. (${computerScore}).`);
+    playerScore = 0;
+    computerScore = 0;
+  } else if (computerScore >= 5) {
+    console.log(`Computer Wins! (${computerScore}) vs. (${playerScore}).`);
+    btnAgain.classList.remove('hidden');
+
+    return (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
+    playerScore = 0;
+    computerScore = 0;
   }
 }
 
