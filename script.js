@@ -100,17 +100,19 @@ function whoWon(playerSelection, computerSelection) {
 function game() {
   if (playerScore >= 5) {
     console.log(`Player Wins! (${playerScore}) vs. (${computerScore}).`);
-    btnAgain.classList.remove('hidden');
-    return (winner.textContent = `Player Wins! (${playerScore}) vs. (${computerScore}).`);
+    winner.textContent = `Player Wins! (${playerScore}) vs. (${computerScore}).`;
     playerScore = 0;
     computerScore = 0;
+    btnAgain.classList.remove('hidden');
+    return;
   } else if (computerScore >= 5) {
     console.log(`Computer Wins! (${computerScore}) vs. (${playerScore}).`);
-    btnAgain.classList.remove('hidden');
-
-    return (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
+    winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`;
     playerScore = 0;
     computerScore = 0;
+    btnAgain.classList.remove('hidden');
+
+    return;
   }
 }
 
@@ -118,4 +120,3 @@ function game() {
 for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener('click', playRound);
 }
-
