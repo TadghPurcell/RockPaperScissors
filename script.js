@@ -103,21 +103,12 @@ function whoWon(playerSelection, computerSelection) {
 
 // most important function - runs loop to increment and keep track of scores and executes all other functions as prompt is entered to return a new value for scores, and a string to show the events of the round
 function game() {
-  if (playerScore >= 5) {
-    score0El.textContent = 5;
-    console.log(`Player Wins! (${playerScore}) vs. (${computerScore}).`);
-    winner.textContent = `Player Wins! (${playerScore}) vs. (${computerScore}).`;
-    // playerScore = 0;
-    // computerScore = 0;
+  if (playerScore >= 5 || computerScore >= 5) {
     btnAgain.classList.remove('hidden');
-    return;
-  } else if (computerScore >= 5) {
-    score1El.textContent = 5;
-    console.log(`Computer Wins! (${computerScore}) vs. (${playerScore}).`);
-    winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`;
-    // playerScore = 0;
-    // computerScore = 0;
-    btnAgain.classList.remove('hidden');
+    winner.textContent =
+      playerScore >= 5
+        ? `Player Wins! (${playerScore}) vs. (${computerScore}).`
+        : (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
     return;
   }
 }
