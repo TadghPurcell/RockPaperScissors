@@ -1,3 +1,12 @@
+@font-face {
+  font-family: bangers;
+  src: url(bangers-regular.ttf);
+}
+
+html {
+  font-family: bangers, sans-serif;
+}
+
 body {
   background-color: rgb(89, 249, 238);
   font-size: 25px;
