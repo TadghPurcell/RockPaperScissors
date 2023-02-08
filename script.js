@@ -9,6 +9,7 @@ const score0El = document.querySelector('.score--0');
 const score1El = document.querySelector('.score--1');
 const winner = document.querySelector('.winner');
 const btnAgain = document.querySelector('.again');
+const playerButtons = document.querySelector('.player-selection');
 // variables to be invoked later by the game() function to keep track of scores
 let playerScore, computerScore, playerInput, playing;
 
@@ -20,7 +21,10 @@ const init = function () {
   winner.textContent = '';
   score0El.textContent = 0;
   score1El.textContent = 0;
-  btnAgain.classList.toggle('hidden');
+  rock.classList.remove('hidden');
+  paper.classList.remove('hidden');
+  scissors.classList.remove('hidden');
+  btnAgain.classList.add('hidden');
 };
 init();
 
@@ -119,9 +123,12 @@ function whoWon(playerSelection, computerSelection) {
 function game() {
   if (playerScore >= 5 || computerScore >= 5) {
     dialog.textContent = 'Game over!';
+    rock.classList.add('hidden');
+    paper.classList.add('hidden');
+    scissors.classList.add('hidden');
     btnAgain.classList.remove('hidden');
     playerScore >= 5
-      ? `Player Wins! (${playerScore}) vs. (${computerScore}).`
+      ? (winner.textContent = `Player Wins! (${playerScore}) vs. (${computerScore}).`)
       : (winner.textContent = `Computer Wins! (${computerScore}) vs. (${playerScore}).`);
     playing = false;
     return;
